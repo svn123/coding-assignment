@@ -5,7 +5,10 @@ Detailed explanation for the coding assignment
 2. horizonal search function will search for the word in left to right direction only, if not found returns false, else returns the co-ordinates of the first letter and count of rotation. 
 3. vertical search function will search for the word in the top to bottom direction only, if not found returns false, else returns the co-ordinates of the first letter and count of rotation. 
 4. rotate function is defined to rotate the characters in clockwise by 1 step, if the word is not found in either horizontal search or vertical search, then a rotation is done to the array and the search for the word will continue.
-5. All the functions have been unit tested with a code coverage of 86.3 %
+5. All the functions have been unit tested with a code coverage of 90.4 %
+
+Assumptions:
+Since the program uses recursion, and all the recursion calls are stored in stack due to which if infinite recursive calls are made then fatal error occurs stating stack overflow.Therefore a base condition of 10 lakh rotation has been assumed after which the program will print word not found and terminate the program safely. The program has been tested for 1 crore as a base case, but sometime it works and sometime it throws error.Therefore a proper base can be chosen based on the research of the use case and program
 
 
 Pre-requiste to run the program
