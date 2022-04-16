@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -122,6 +123,8 @@ func TestVertical_search(t *testing.T) {
 		name string
 		args args
 		want bool
+		x    int
+		y    int
 	}{
 		{
 			name: "Test6-vertical",
@@ -134,24 +137,30 @@ func TestVertical_search(t *testing.T) {
 				word: "abc",
 			},
 			want: false,
+			x:    0,
+			y:    0,
 		},
 		{
 			name: "Test7-vertical",
 			args: args{
 				puzzle: [][]byte{
-					{'a', 'd', 'g'},
-					{'b', 'e', 'f'},
-					{'c', 'h', 'i'},
+					{'z', 'e', 'a'},
+					{'w', 'n', 'b'},
+					{'n', 'q', 'c'},
 				},
 				word: "abc",
 			},
 			want: true,
+			x:    2,
+			y:    0,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := vertical_search(tt.args.puzzle, tt.args.word); got != tt.want {
-				t.Errorf("vertical_search() = %v, want %v", got, tt.want)
+			if got, x, y := vertical_search(tt.args.puzzle, tt.args.word); got == tt.want && x == tt.x && y == tt.y {
+				fmt.Printf("%v %v %v\n", got, x, y)
+			} else {
+				t.Errorf("vertical_search(): got = %v, want %v | x_got = %v, x_actual = %v | y_got = %v, y_actual = %v ", got, tt.want, x, tt.x, y, tt.y)
 			}
 		})
 	}
@@ -166,6 +175,8 @@ func TestHorizontal_search(t *testing.T) {
 		name string
 		args args
 		want bool
+		x    int
+		y    int
 	}{
 		{
 			name: "Test8-horizontal",
@@ -178,6 +189,8 @@ func TestHorizontal_search(t *testing.T) {
 				word: "abc",
 			},
 			want: true,
+			x:    0,
+			y:    0,
 		},
 		{
 			name: "Test9-horizontal",
@@ -190,12 +203,16 @@ func TestHorizontal_search(t *testing.T) {
 				word: "abc",
 			},
 			want: false,
+			x:    0,
+			y:    0,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := horizontal_search(tt.args.puzzle, tt.args.word); got != tt.want {
-				t.Errorf("horizontal_search() = %v, want %v", got, tt.want)
+			if got, x, y := horizontal_search(tt.args.puzzle, tt.args.word); got == tt.want && x == tt.x && y == tt.y {
+				fmt.Printf("%v %v %v\n", got, x, y)
+			} else {
+				t.Errorf("horizontal_search(): got = %v, want %v | x_got = %v, x_actual = %v | y_got = %v, y_actual = %v ", got, tt.want, x, tt.x, y, tt.y)
 			}
 		})
 	}

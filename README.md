@@ -11,13 +11,25 @@ Detailed explanation for the coding assignment
 Pre-requiste to run the program
 1. Have golang installed in the system
 2. Clone the repository [coding-assignment](https://github.com/svn123/coding-assignment.git)
+3. There are 2 branches(i.e main and master), switch to the master branch to check the code and run it 
 
 
 Commands to run and test the program
 
 Command to run program:
 ```
+$ git clone https://github.com/svn123/coding-assignment.git
 $ cd golang_assignment
+$ git branch (If the branch is main then switch to the master branch) by executing the next statement
+$ git checkout master
+$ go run main.go
+```
+
+If there is any issue with go run main.go wrt go.mod file or go.sum file, then follow the below steps:
+```
+$ rm go.mod go.sum
+$ go mod init golang_assignment
+$ go mod tidy
 $ go run main.go
 ```
 

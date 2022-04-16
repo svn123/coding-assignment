@@ -46,12 +46,11 @@ func rotate_clockwise(puzzle [][]byte) [][]byte {
 		}
 		new_puzzle = append(new_puzzle, new_row)
 	}
-	fmt.Println(new_puzzle)
 	return new_puzzle
 }
 
 // search character in vertical direction
-func vertical_search(puzzle [][]byte, word string) bool {
+func vertical_search(puzzle [][]byte, word string) (bool, int, int) {
 	length := len(word)
 	var str string
 	for i := 0; i < len(puzzle); i++ {
@@ -62,20 +61,19 @@ func vertical_search(puzzle [][]byte, word string) bool {
 					if j+k < len(puzzle[i]) {
 						str += string(puzzle[j+k][i])
 					}
-					fmt.Println(str)
 				}
 				if str == word {
 					fmt.Println("The co-ordinates are : ", i, j)
-					return true
+					return true, i, j
 				}
 			}
 		}
 	}
-	return false
+	return false, 0, 0
 }
 
 // search character in horizontal direction
-func horizontal_search(puzzle [][]byte, word string) bool {
+func horizontal_search(puzzle [][]byte, word string) (bool, int, int) {
 	length := len(word)
 	var str string
 	for i := 0; i < len(puzzle); i++ {
@@ -86,24 +84,27 @@ func horizontal_search(puzzle [][]byte, word string) bool {
 					if j+k < len(puzzle[i]) {
 						str += string(puzzle[i][j+k])
 					}
-					fmt.Println(str)
 				}
 
 				if str == word {
 					fmt.Println("The co-ordinates are : ", i, j)
-					return true
+					return true, i, j
 				}
 			}
 		}
 	}
-	return false
+	return false, 0, 0
 }
 
 // function for searching for a particular word in the 2d array
 func find_the_word(puzzle [][]byte, word string) int {
 	var puzzle_rotated [][]byte
-	if horizontal_search(puzzle, word) || vertical_search(puzzle, word) {
-		print(count)
+	var horizontal, x, y = horizontal_search(puzzle, word)
+	var vertical, a, b = vertical_search(puzzle, word)
+	if horizontal {
+		fmt.Printf("x = %v, y = %v, count = %v\n", x, y, count)
+	} else if vertical {
+		fmt.Printf("x = %v, y = %v, count = %v\n", a, b, count)
 	} else {
 		puzzle_rotated = rotate_clockwise(puzzle)
 		count++
@@ -114,7 +115,8 @@ func find_the_word(puzzle [][]byte, word string) int {
 
 func main() {
 
-	sample := [][]byte{{'z', 'e', 'z'},
+	sample := [][]byte{
+		{'z', 'e', 'z'},
 		{'w', 'n', 'a'},
 		{'n', 'q', 'b'}}
 
@@ -167,6 +169,7 @@ func main() {
 
 	find_the_word(sample, sample_word)
 	//find_the_word(puzzle1, puz1_srchterm)
+	count = 0
 	find_the_word(puzzle2, puz2_srchterm)
 
 }
