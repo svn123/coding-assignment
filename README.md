@@ -47,6 +47,10 @@ $ go test -coverprofile coverage.txt
 $ go tool cover --html=coverage.txt
 ```
 
+Output Image:
+
+![Output](coding-assignment-output.PNG)
+
 
 
 
