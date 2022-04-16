@@ -5,7 +5,7 @@ Detailed explanation for the coding assignment
 2. horizonal search function will search for the word in left to right direction only, if not found returns false, else returns the co-ordinates of the first letter and count of rotation. 
 3. vertical search function will search for the word in the top to bottom direction only, if not found returns false, else returns the co-ordinates of the first letter and count of rotation. 
 4. rotate function is defined to rotate the characters in clockwise by 1 step, if the word is not found in either horizontal search or vertical search, then a rotation is done to the array and the search for the word will continue.
-5. All the functions have been unit tested with a code coverage of 93.5 %
+5. All the functions have been unit tested with a code coverage of 86.3 %
 
 
 Pre-requiste to run the program
@@ -40,7 +40,8 @@ $ go test -v
 
 Command to check the code coverage:
 ```
-$ go test -coverprofile coverage.out
+$ go test -coverprofile coverage.txt
+$ go tool cover --html=coverage.txt
 ```
 
 
