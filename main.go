@@ -63,7 +63,7 @@ func vertical_search(puzzle [][]byte, word string) (bool, int, int) {
 					}
 				}
 				if str == word {
-					fmt.Println("The co-ordinates are : ", i, j)
+					fmt.Printf("The co-ordinates for first letter of the search word : %v are x : %v , y: %v \n", word, i, j)
 					return true, i, j
 				}
 			}
@@ -87,7 +87,7 @@ func horizontal_search(puzzle [][]byte, word string) (bool, int, int) {
 				}
 
 				if str == word {
-					fmt.Println("The co-ordinates are : ", i, j)
+					fmt.Printf("The co-ordinates for first letter of the search word : %v are  x : %v, y: %v \n", word, i, j)
 					return true, i, j
 				}
 			}
